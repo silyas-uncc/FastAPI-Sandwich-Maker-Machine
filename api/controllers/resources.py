@@ -15,8 +15,8 @@ def create(db: Session, resource):
 def read_all(db: Session):
     return db.query(models.Resource).all()
 
-def read_one(db: Session, sandwich_id):
-    return db.query(models.Sandwich).filter(models.Sandwich.id == sandwich_id).first()
+def read_one(db: Session, resource_id):
+    return db.query(models.Resource).filter(models.Resource.id == resource_id).first()
 
 def update(db: Session, resource_id, resource):
     db_resource = db.query(models.Resource).filter(models.Resource.id == resource_id)
