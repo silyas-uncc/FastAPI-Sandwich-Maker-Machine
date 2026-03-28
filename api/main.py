@@ -35,7 +35,7 @@ def read_orders(db: Session = Depends(get_db)):
 def read_one_order(order_id: int, db: Session = Depends(get_db)):
     order = orders.read_one(db, order_id=order_id)
     if order is None:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=404, detail="Order not found")
     return order
 
 
@@ -43,7 +43,7 @@ def read_one_order(order_id: int, db: Session = Depends(get_db)):
 def update_one_order(order_id: int, order: schemas.OrderUpdate, db: Session = Depends(get_db)):
     order_db = orders.read_one(db, order_id=order_id)
     if order_db is None:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=404, detail="Order not found")
     return orders.update(db=db, order=order, order_id=order_id)
 
 
@@ -51,7 +51,7 @@ def update_one_order(order_id: int, order: schemas.OrderUpdate, db: Session = De
 def delete_one_order(order_id: int, db: Session = Depends(get_db)):
     order = orders.read_one(db, order_id=order_id)
     if order is None:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=404, detail="Order not found")
     return orders.delete(db=db, order_id=order_id)
 
 # Sandwiches Endpoints
